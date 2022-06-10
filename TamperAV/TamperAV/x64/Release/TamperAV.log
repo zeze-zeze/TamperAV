@@ -1,0 +1,12 @@
+﻿  TamperAV.cpp
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(60,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(104,16): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'const char *'
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(104,16): warning C4313: 'printf': '%d' in format string conflicts with argument 1 of type 'const char *'
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(104,95): warning C4474: 'printf' : too many arguments passed for format string
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(104,95): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+  Generating code
+  8 of 97 functions ( 8.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  TamperAV.vcxproj -> D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\x64\Release\TamperAV.exe

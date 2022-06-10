@@ -1,0 +1,25 @@
+﻿  Building 'TamperAVDrv' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (infinity_hook_pro.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Stamping x64\Release\TamperAVDrv.inf
+  Stamping [Version] section with DriverVer=06/11/2022,1.37.40.386
+  enumCallback.cpp
+  hde64.cpp
+  hook.cpp
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\hook.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\utils.hpp(27,75): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\hook.cpp(99,61): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\hook.cpp(107,38): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+  main.cpp
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\main.cpp(113,14): warning C4189: 'status': local variable is initialized but not referenced
+  rootkit.cpp
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(29,14): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(49,35): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(73,35): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(95,32): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(98,18): warning C4189: 'status': local variable is initialized but not referenced
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(296,45): warning C4311: 'type cast': pointer truncation from 'PVOID' to 'ULONG'
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(296,45): warning C4302: 'type cast': truncation from 'PVOID' to 'ULONG'
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(296,71): warning C4311: 'type cast': pointer truncation from 'PVOID' to 'ULONG'
+D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\TamperAVDrv\rootkit.cpp(296,71): warning C4302: 'type cast': truncation from 'PVOID' to 'ULONG'
+  Generating Code...
+  TamperAVDrv.vcxproj -> D:\hacker\activity\TaiwanHolyHigh2021\TamperAV\TamperAVDrv\x64\Release\TamperAVDrv.sys

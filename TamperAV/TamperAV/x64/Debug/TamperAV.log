@@ -1,0 +1,6 @@
+﻿  TamperAV.cpp
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(26,16): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'const char *'
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(26,16): warning C4313: 'printf': '%d' in format string conflicts with argument 1 of type 'const char *'
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(26,95): warning C4474: 'printf' : too many arguments passed for format string
+D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\TamperAV\TamperAV.cpp(26,95): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+  TamperAV.vcxproj -> D:\hacker\activity\TaiwanHolyHigh2021\InfinityHookPro\TamperAV\x64\Debug\TamperAV.exe
