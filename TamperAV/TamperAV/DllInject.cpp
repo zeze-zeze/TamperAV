@@ -118,7 +118,7 @@ BOOL dllInject() {
 								return FALSE;
 				}
 
-				char dllname[150] = "C:\\Users\\admin\\Desktop\\InjectedDLL_x86.dll";
+				char dllname[150] = "C:\\InjectedDLL_x86.dll";
 				int size = strlen(dllname) + 5;
 				PVOID procdlladdr = VirtualAllocEx(hprocess, NULL, size, MEM_COMMIT, PAGE_READWRITE);
 				if (procdlladdr == NULL) {
