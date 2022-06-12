@@ -4,11 +4,11 @@
 #define NO_MORE_ENTRIES		0
 
 typedef NTSTATUS(*FNtCreateFile)(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES, PIO_STATUS_BLOCK, PLARGE_INTEGER, ULONG, ULONG, ULONG, ULONG, PVOID, ULONG);
-static FNtCreateFile g_NtCreateFile = 0;
+static FNtCreateFile g_NtCreateFile = 0, g_ZwCreateFile = 0;
 typedef NTSTATUS(*FNtOpenFile)(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES, PIO_STATUS_BLOCK, ULONG, ULONG);
-static FNtOpenFile g_NtOpenFile = 0;
+static FNtOpenFile g_NtOpenFile = 0, g_ZwOpenFile = 0;
 typedef NTSTATUS(*FNtReadVirtualMemory)(HANDLE, PVOID, PVOID, ULONG, ULONG);
-static FNtReadVirtualMemory g_NtReadVirtualMemory = 0;
+static FNtReadVirtualMemory g_NtReadVirtualMemory = 0, g_ZwReadVirtualMemory = 0;
 
 typedef NTSTATUS(*FNtQueryDirectoryFile)
 (
@@ -39,6 +39,8 @@ static QUERY_INFO_PROCESS ZwQueryInformationProcess = NULL;
 const WCHAR prefix[] = L"XD";
 #define PREFIX_SIZE				2
 
+VOID SetNtFunction();
+void __fastcall filter(unsigned long ssdt_index, void** ssdt_address);
 NTSTATUS GetProcessImageName(HANDLE ProcessHandle, PUNICODE_STRING ProcessImageName);
 NTSTATUS MyNtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, PIO_STATUS_BLOCK IoStatusBlock, PLARGE_INTEGER AllocationSize, ULONG FileAttributes, ULONG ShareAccess, ULONG CreateDisposition, ULONG CreateOptions, PVOID EaBuffer, ULONG EaLength);
 NTSTATUS MyNtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess, POBJECT_ATTRIBUTES ObjectAttributes, PIO_STATUS_BLOCK IoStatusBlock, ULONG ShareAccess, ULONG OpenOptions);

