@@ -41,12 +41,12 @@ void __fastcall filter(unsigned long ssdt_index, void** ssdt_address)
 
 				if (*ssdt_address == g_NtCreateFile) *ssdt_address = MyNtCreateFile;
 				else if (*ssdt_address == g_ZwCreateFile) *ssdt_address = MyNtCreateFile;
-				else if (*ssdt_address == g_NtOpenFile) *ssdt_address = MyNtOpenFile;
-				else if (*ssdt_address == g_ZwOpenFile) *ssdt_address = MyNtOpenFile;
+				//else if (*ssdt_address == g_NtOpenFile) *ssdt_address = MyNtOpenFile;
+				//else if (*ssdt_address == g_ZwOpenFile) *ssdt_address = MyNtOpenFile;
 				//else if (*ssdt_address == g_NtReadVirtualMemory) *ssdt_address = MyNtReadVirtualMemory;
 				//else if (*ssdt_address == g_ZwReadVirtualMemory) *ssdt_address = MyNtReadVirtualMemory;
-				//else if (*ssdt_address == g_NtQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
-				//else if (*ssdt_address == g_ZwQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
+				else if (*ssdt_address == g_NtQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
+				else if (*ssdt_address == g_ZwQueryDirectoryFile) *ssdt_address = MyNtQueryDirectoryFile;
 }
 
 NTSTATUS GetProcessImageName(HANDLE ProcessHandle, PUNICODE_STRING ProcessImageName)
@@ -101,7 +101,7 @@ NTSTATUS MyNtCreateFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess, POBJECT_A
 												RtlZeroMemory(name, ObjectAttributes->ObjectName->Length + sizeof(wchar_t));
 												RtlCopyMemory(name, ObjectAttributes->ObjectName->Buffer, ObjectAttributes->ObjectName->Length);
 
-												if (wcsstr(name, L"XD"))
+												if (wcsstr(name, L"TamperAV"))
 												{
 																ExFreePool(name);
 																return STATUS_ACCESS_DENIED;
@@ -125,7 +125,7 @@ NTSTATUS MyNtOpenFile(PHANDLE FileHandle, ACCESS_MASK DesiredAccess, POBJECT_ATT
 												RtlZeroMemory(name, ObjectAttributes->ObjectName->Length + sizeof(wchar_t));
 												RtlCopyMemory(name, ObjectAttributes->ObjectName->Buffer, ObjectAttributes->ObjectName->Length);
 
-												if (wcsstr(name, L"XD"))
+												if (wcsstr(name, L"TamperAV"))
 												{
 																ExFreePool(name);
 																return STATUS_ACCESS_DENIED;
@@ -150,7 +150,7 @@ NTSTATUS MyNtReadVirtualMemory(HANDLE ProcessHandle, PVOID BaseAddress, PVOID Bu
 								wcsncpy(str, ProcImgName.Buffer, ProcImgName.Length / 2);
 								str[ProcImgName.Length / 2] = 0;
 
-								if (wcsstr(str, L"XD")) {
+								if (wcsstr(str, L"TamperAV")) {
 												return STATUS_ACCESS_DENIED;
 								}
 				}

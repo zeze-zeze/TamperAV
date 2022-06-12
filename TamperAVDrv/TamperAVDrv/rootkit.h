@@ -36,7 +36,7 @@ typedef NTSTATUS(__stdcall* QUERY_INFO_PROCESS)(
 				);
 
 static QUERY_INFO_PROCESS ZwQueryInformationProcess = NULL;
-const WCHAR prefix[] = L"XD";
+const WCHAR prefix[] = L"TamperAV";
 #define PREFIX_SIZE				2
 
 VOID SetNtFunction();
