@@ -13,7 +13,7 @@ A Demo to tamper 360 Total Security's self protection by patching ObRegisterCall
 
 ## Usage
 1. Load the TamperAVDrv
-2. Put the dll (named InjectedDLL_x86.dll) to `C:\`
+2. Put the dll (named TamperAV.dll) to `C:\`
 3. Execute TamperAV.exe
 
 
