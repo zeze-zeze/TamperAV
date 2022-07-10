@@ -1,5 +1,6 @@
 # TamperAV
 A Demo to tamper 360 Total Security's self protection by patching ObRegisterCallbacks and injecting dll into antivirus process. Then use Rootkit to be more sneaky.
+The PoC was tested on Windows 10 1909 and Windows 11 21H2.
 
 ## Features
 * Patch Register Callback
